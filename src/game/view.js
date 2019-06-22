@@ -13,10 +13,19 @@ class GameView {
 
   initGameOverPage (callbacks) {
     this.gameOverPage = new GameOverPage(callbacks)
-    this.gameOverPage.init()
+    this.gameOverPage.init({
+      scene: this.gamePage.scene
+    })
+  }
+
+  showGamePage () {
+    this.gameOverPage.hide()
+    this.gamePage.restart()
+    this.gamePage.show()
   }
 
   showGameOverPage () {
+    this.gamePage.hide()
     this.gameOverPage.show()
   }
 

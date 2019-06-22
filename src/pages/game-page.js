@@ -5,8 +5,8 @@ class GamePage {
 
   init () {
     console.log('game page init')
-    const width = 375
-    const height = 667
+    const width = window.innerWidth
+    const height = window.innerHeight
     // let canvas = wx.createCanvas()
     
     const renderer = new THREE.WebGLRenderer({
@@ -14,19 +14,27 @@ class GamePage {
     })
     
     const scene = new THREE.Scene()
-    
+    this.scene = scene
+
+    const axesHelper = new THREE.AxesHelper( 300 );
+    scene.add( axesHelper );
+
     const camera = new THREE.OrthographicCamera(- width / 2, width / 2, height / 2, - height / 2, -1000, 1000)
-    camera.position.x = 10
-    camera.position.y = 10
+    // const cameraHelper = new THREE.CameraHelper( camera )
+    // scene.add(cameraHelper)
+    
+    camera.position.x = 0
+    camera.position.y = 0
     camera.position.z = -10
     camera.lookAt(new THREE.Vector3(0, 0, 0))
     
-    renderer.setClearColor(new THREE.Color(0x00aa00, 1.0))
-    renderer.setSize(375, 667)
+    renderer.setClearColor(new THREE.Color(0x000000, 0))
+    renderer.setSize(width, height)
     
     let geometry = new THREE.BoxGeometry( 100, 100, 100 )
     let material = new THREE.MeshBasicMaterial( {color: 0x00ff00} )
     let cube = new THREE.Mesh( geometry, material )
+    this.cube = cube
     cube.position.x = 0
     cube.position.y = 0
     cube.position.z = 0
@@ -49,11 +57,24 @@ class GamePage {
       renderer.render(scene, camera)
       requestAnimationFrame(render)
     }
+
+    setTimeout(() => {
+      this.callbacks.showGameOverPage()
+    }, 2000)
+    
     render()
   }
 
   restart () {
     console.log('game page restart')
+  }
+
+  show () {
+    this.cube.visible = true
+  }
+
+  hide () {
+    this.cube.visible = false
   }
 }
 
