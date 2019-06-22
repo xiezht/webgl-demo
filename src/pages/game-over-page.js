@@ -59,7 +59,7 @@ class GameOverPage {
     this.context.font = '30px Georgia'
     this.context.fillText('Game Over', (window.innerWidth - 200) / 2 + 25, (window.innerHeight - 100) / 2 + 55)
     this.texture.needsUpdate = true
-    this.scene.add(this.obj)
+    this.scene.instance.add(this.obj)
   }
 }
 
