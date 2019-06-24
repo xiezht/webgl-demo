@@ -1,6 +1,7 @@
 import { scene } from '../scene/index'
 import Cuboild from '../block/cuboild'
 import Cylinder from '../block/cylinder'
+import ground from '../objects/ground'
 
 class GamePage {
   constructor (callbacks) {
@@ -10,6 +11,7 @@ class GamePage {
   init () {
     this.scene = scene
     this.scene.init()
+    this.addGround()
     this.addInitBlock()
     this.render()
   }
@@ -26,6 +28,12 @@ class GamePage {
     scene.add(cuboildBlock.instance)
     scene.add(cylinderBlock.instance)
   }
+
+  addGround () {
+    ground.init()
+    this.scene.instance.add(ground.instance)
+  }
+
   restart () {
     // console.log('game page restart')
   }

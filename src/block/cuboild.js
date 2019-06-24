@@ -5,9 +5,10 @@ class Cuboild extends BaseBlock {
     super('cuboild')
     const size = width || this.width
     const geometry = new THREE.BoxGeometry(size, this.height, size)
-    const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
     this.instance = new THREE.Mesh(geometry, material)
     this.instance.name = 'block'
+    this.instance.castShadow = true
     this.x = x
     this.y = y
     this.z = z
