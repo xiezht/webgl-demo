@@ -2,6 +2,7 @@ import { scene } from '../scene/index'
 import Cuboild from '../block/cuboild'
 import Cylinder from '../block/cylinder'
 import ground from '../objects/ground'
+import bottle from '../objects/bottle.js'
 
 class GamePage {
   constructor (callbacks) {
@@ -13,6 +14,7 @@ class GamePage {
     this.scene.init()
     this.addGround()
     this.addInitBlock()
+    this.addBottle()
     this.render()
   }
 
@@ -32,6 +34,11 @@ class GamePage {
   addGround () {
     ground.init()
     this.scene.instance.add(ground.instance)
+  }
+
+  addBottle () {
+    bottle.init()
+    this.scene.instance.add(bottle.obj)
   }
 
   restart () {

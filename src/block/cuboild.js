@@ -9,6 +9,7 @@ class Cuboild extends BaseBlock {
     this.instance = new THREE.Mesh(geometry, material)
     this.instance.name = 'block'
     this.instance.castShadow = true
+    this.instance.receiveShadow = true
     this.x = x
     this.y = y
     this.z = z
